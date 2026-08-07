@@ -1,0 +1,12 @@
+{
+  "name": "lapau-siantar",
+  "version": "1.0.0",
+  "description": "Lapau Siantar - Rasa Simalungun",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
