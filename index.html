@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Resmi Kelurahan Bane</title>
+    
+    <style>
+        /* --- RESET & KUNCI SCROLL HORIZONTAL --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+            background-color: #f1f5f9;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        /* --- NAVBAR / HEADER --- */
+        header {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+        }
+
+        .logo h2 {
+            font-size: 20px;
+            color: #60a5fa;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #93c5fd;
+        }
+
+        /* --- HERO BANNER --- */
+        .hero {
+            background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.8)), 
+                        url('fuurinmc.jpeg') center/cover;
+            color: white;
+            padding: 50px 15px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .hero p {
+            font-size: 14px;
+            color: #e2e8f0;
+        }
+
+        /* --- CONTAINER KONTEN --- */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 20px auto;
+        }
+
+        .judul-seksi {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #1e3a8a;
+            font-size: 20px;
+        }
+
+        /* --- CARD STYLE KHUSUS KONTEN TAMBAHAN --- */
+        .card-box {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+            border-top: 4px solid #1e3a8a;
+        }
+
+        /* Visi Misi Style */
+        .visi-box {
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        .misi-list {
+            padding-left: 20px;
+        }
+
+        .misi-list li {
+            margin-bottom: 8px;
+        }
+
+        /* Struktur Organisasi Table */
+        .struktur-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .struktur-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .struktur-card h4 {
+            color: #1e3a8a;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .struktur-card p {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        /* Button Galeri Page */
+        .banner-galeri {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            color: white;
+            text-align: center;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+
+        .btn-galeri-link {
+            display: inline-block;
+            margin-top: 15px;
+            background: white;
+            color: #1e3a8a;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-galeri-link:hover {
+            background: #93c5fd;
+        }
+
+        /* --- BARIS BERDAMPINGAN: KALENDER & PETA --- */
+        .top-widgets-row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            align-items: stretch;
+            width: 100%;
+        }
+
+        /* WIDGET KALENDER */
+        .kalender-section {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid #1e3a8a;
+            flex: 1 1 300px;
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .kalender-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            background: #f8fafc;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        .kalender-info h3 {
+            color: #1e3a8a;
+            font-size: 14px;
+        }
+
+        .kalender-info p {
+            color: #64748b;
+            font-size: 11px;
+        }
+
+        .jam-realtime {
+            background: #1e3a8a;
+            color: #60a5fa;
+            font-family: monospace;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .kalender-grid-header, .kalender-grid-dates {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+        }
+
+        .kalender-grid-header div {
+            font-weight: 700;
+            color: #475569;
+            padding: 4px 0;
+            background: #e2e8f0;
+            border-radius: 3px;
+            font-size: 10px;
+            margin: 1px;
+        }
+
+        .kalender-grid-dates div {
+            padding: 8px 0;
+            margin: 1px;
+            border-radius: 4px;
+            font-size: 11px;
+            color: #334155;
+            background: #f8fafc;
+        }
+
+        .kalender-grid-dates div:hover {
+            background: #e2e8f0;
+        }
+
+        .kalender-grid-dates .empty {
+            background: transparent;
+        }
+
+        .kalender-grid-dates .today {
+            background-color: #2563eb !important;
+            color: white !important;
+            font-weight: bold;
+        }
+
+        /* WIDGET PETA DIGITAL */
+        .peta-section {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid #1e3a8a;
+            flex: 1.2 1 300px;
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .peta-header {
+            margin-bottom: 10px;
+        }
+
+        .peta-header h3 {
+            color: #1e3a8a;
+            font-size: 15px;
+        }
+
+        .peta-header p {
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .peta-container {
+            width: 100%;
+            flex: 1;
+            min-height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #cbd5e1;
+        }
+
+        .peta-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* --- KARTU LAYANAN --- */
+        .layanan-grid {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .kartu-layanan {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            flex: 1 1 250px;
+            max-width: 100%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            border-top: 4px solid #2563eb;
+        }
+
+        .kartu-layanan h3 {
+            margin-bottom: 10px;
+            color: #1e293b;
+            font-size: 16px;
+        }
+
+        /* --- GALERI PREVIEW --- */
+        .galeri-section {
+            margin-top: 30px;
+        }
+
+        .galeri-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 15px;
+        }
+
+        .galeri-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .galeri-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .galeri-card img, 
+        .galeri-card video {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .galeri-info {
+            padding: 15px;
+        }
+
+        .galeri-info h4 {
+            color: #1e3a8a;
+            margin-bottom: 5px;
+            font-size: 15px;
+        }
+
+        .galeri-info p {
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .galeri-badge {
+            display: inline-block;
+            background-color: #e0f2fe;
+            color: #0369a1;
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        /* --- FORM PENGAJUAN SURAT --- */
+        .form-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            margin-top: 30px;
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+
+        .form-group input, 
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .btn-kirim {
+            background-color: #2563eb;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .btn-kirim:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px 15px;
+            margin-top: 40px;
+            font-size: 13px;
+            width: 100%;
+        }
+
+        /* --- CASSETTE PLAYER DESIGN --- */
+        .cassette-container {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: #0f172a;
+            border: 2px solid #2563eb;
+            border-radius: 12px;
+            padding: 10px;
+            width: 240px;
+            max-width: 90vw;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            z-index: 1000;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            user-select: none;
+            cursor: move;
+            touch-action: none;
+        }
+
+        .cassette-body {
+            background: #1e293b;
+            border-radius: 8px;
+            padding: 8px;
+            border: 1px solid #334155;
+        }
+
+        .search-box-music {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 8px;
+        }
+
+        .search-box-music input {
+            width: 100%;
+            padding: 5px 8px;
+            font-size: 11px;
+            border-radius: 4px;
+            border: 1px solid #475569;
+            background: #0f172a;
+            color: white;
+            outline: none;
+        }
+
+        .search-box-music button {
+            background: #2563eb;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            font-size: 11px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .search-results-music {
+            max-height: 100px;
+            overflow-y: auto;
+            background: #0f172a;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            display: none;
+        }
+
+        .music-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px;
+            font-size: 11px;
+            cursor: pointer;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .music-item:hover {
+            background: #1e293b;
+        }
+
+        .music-item img {
+            width: 25px;
+            height: 25px;
+            border-radius: 3px;
+        }
+
+        .music-item-info {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .cassette-wheels {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 8px;
+            background: #0f172a;
+            padding: 6px;
+            border-radius: 6px;
+        }
+
+        .wheel {
+            width: 28px;
+            height: 28px;
+            border: 3px dashed #60a5fa;
+            border-radius: 50%;
+            animation: spin 3s linear infinite;
+            animation-play-state: paused;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .cassette-label {
+            text-align: center;
+            font-size: 11px;
+            color: #93c5fd;
+            margin-bottom: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: 600;
+        }
+
+        .progress-container {
+            width: 100%;
+            background-color: #334155;
+            height: 6px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            cursor: pointer;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background-color: #3b82f6;
+            transition: width 0.1s linear;
+        }
+
+        .controls-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 10px;
+            color: #cbd5e1;
+            font-family: monospace;
+        }
+
+        .btn-repeat {
+            background: #334155;
+            border: 1px solid #475569;
+            color: #93c5fd;
+            cursor: pointer;
+            font-size: 10px;
+            padding: 2px 5px;
+            border-radius: 4px;
+            transition: 0.2s;
+        }
+
+        .btn-repeat:hover {
+            background: #2563eb;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            nav ul {
+                justify-content: center;
+            }
+
+            .container {
+                width: 95%;
+            }
+
+            .hero {
+                padding: 35px 10px;
+            }
+
+            .hero h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h2>Kelurahan Bane</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#profil">Profil & Visi Misi</a></li>
+                <li><a href="#info-wilayah">Info & Lokasi</a></li>
+                <li><a href="#layanan">Layanan</a></li>
+                <li><a href="#galeri">Kegiatan</a></li>
+                <li><a href="galeri">Album Foto 📸</a></li>
+                <li><a href="#pengajuan">Pengajuan Surat</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Selamat Datang di Pelayanan Digital</h1>
+        <p>Kelurahan Bane, Kecamatan Siantar Utara</p>
+    </section>
+
+    <div class="container">
+
+        <!-- SECTION: PROFIL KANTOR LURAH & ALAMAT -->
+        <section id="profil" class="card-box">
+            <h2 class="judul-seksi">Profil Kantor Lurah Bane</h2>
+            <p style="font-size: 14px; margin-bottom: 15px; text-align: justify;">
+                Kantor Kelurahan Bane bertugas sebagai pusat penyelenggaraan pemerintahan, pembangunan infrastruktur, dan pembinaan sosial kemasyarakatan di wilayah Kecamatan Siantar Utara. Kami berkomitmen memberikan pelayanan umum yang profesional, cepat, transparan, dan dapat diakses oleh seluruh lapisan masyarakat.
+            </p>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap; background: #f8fafc; padding: 15px; border-radius: 8px;">
+                <div style="flex: 1; min-width: 200px;">
+                    <h4 style="color: #1e3a8a; font-size: 14px;">📍 Alamat Kantor:</h4>
+                    <p style="font-size: 13px;">Kelurahan Bane, Kecamatan Siantar Utara, Kota Pematang Siantar, Sumatera Utara.</p>
+                </div>
+                <div style="flex: 1; min-width: 200px;">
+                    <h4 style="color: #1e3a8a; font-size: 14px;">⏰ Jam Operasional Pelayanan:</h4>
+                    <p style="font-size: 13px;">Senin – Jumat: 08.00 – 16.00 WIB<br>Sabtu & Minggu: Libur</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: VISI & MISI -->
+        <section class="card-box">
+            <h2 class="judul-seksi">Visi & Misi Kelurahan Bane</h2>
+            
+            <div class="visi-box">
+                <h3 style="color: #1e3a8a; font-size: 15px; margin-bottom: 5px;">VISI</h3>
+                <p style="font-size: 14px; font-style: italic;">
+                    "Mewujudkan Kelurahan Bane yang Maju, Sejahtera, Aman, dan Unggul dalam Pelayanan Publik Berbasis Kebersamaan."
+                </p>
+            </div>
+
+            <div>
+                <h3 style="color: #1e3a8a; font-size: 15px; margin-bottom: 10px;">MISI</h3>
+                <ol class="misi-list" style="font-size: 13px;">
+                    <li>Meningkatkan mutu pelayanan administrasi kependudukan yang cepat, transparan, dan akuntabel.</li>
+                    <li>Mendorong partisipasi aktif masyarakat dalam gotong royong dan pembangunan infrastruktur wilayah.</li>
+                    <li>Mewujudkan lingkungan pemukiman yang bersih, asri, aman, dan bebas banjir.</li>
+                    <li>Meningkatkan kordinasi dan sinergi antara lurah, kader PKK, tokoh masyarakat, serta lembaga RT/RW.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- SECTION: STRUKTUR ORGANISASI -->
+        <section class="card-box">
+            <h2 class="judul-seksi">Struktur Organisasi</h2>
+            <div class="struktur-grid">
+                <div class="struktur-card">
+                    <h4>Lurah</h4>
+                    <p>Kepala Kelurahan Bane</p>
+                </div>
+                <div class="struktur-card">
+                    <h4>Sekretaris Lurah</h4>
+                    <p>Bidang Administrasi</p>
+                </div>
+                <div class="struktur-card">
+                    <h4>Kasi Pemerintahan</h4>
+                    <p>Bidang Kependudukan</p>
+                </div>
+                <div class="struktur-card">
+                    <h4>Kasi Kesra & Trantib</h4>
+                    <p>Bidang Sosial & Keamanan</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SECTION: TOP WIDGETS (KALENDER & MAPS) -->
+        <div class="top-widgets-row" id="info-wilayah">
+            
+            <section class="kalender-section">
+                <div class="kalender-header">
+                    <div class="kalender-info">
+                        <h3 id="kalenderBulanTahun">Bulan Tahun</h3>
+                        <p id="kalenderHariIni">Hari, 00 Bulan 0000</p>
+                    </div>
+                    <div class="jam-realtime" id="jamRealtime">00:00:00 WIB</div>
+                </div>
+
+                <div class="kalender-grid-header">
+                    <div>Min</div>
+                    <div>Sen</div>
+                    <div>Sel</div>
+                    <div>Rab</div>
+                    <div>Kam</div>
+                    <div>Jum</div>
+                    <div>Sab</div>
+                </div>
+
+                <div class="kalender-grid-dates" id="kalenderDates"></div>
+            </section>
+
+            <section class="peta-section">
+                <div class="peta-header">
+                    <h3>Peta Lokasi Kelurahan Bane</h3>
+                    <p>Kecamatan Siantar Utara, Kota Pematang Siantar</p>
+                </div>
+                
+                <div class="peta-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15931.258752250917!2d99.0500!3d2.9700!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x303184439c6fa713%3A0xd6803bc0214a1a5b!2sBane%2C%20Kec.%20Siantar%20Utara%2C%20Kota%20Pematang%20Siantar%2C%20Sumatera%20Utara!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- SECTION: LAYANAN -->
+        <section id="layanan">
+            <h2 class="judul-seksi">Layanan Administrasi Warga</h2>
+            
+            <div class="layanan-grid">
+                <div class="kartu-layanan">
+                    <h3>Surat Keterangan Usaha</h3>
+                    <p>Pengurusan Keterangan Usaha (SKU) untuk perizinan UMKM warga.</p>
+                </div>
+                <div class="kartu-layanan">
+                    <h3>Surat Keterangan Domisili</h3>
+                    <p>Pengurusan bukti tempat tinggal resmi warga di wilayah kelurahan.</p>
+                </div>
+                <div class="kartu-layanan">
+                    <h3>Surat Pengantar KTP/KK</h3>
+                    <p>Pengurusan surat pengantar untuk pembuatan e-KTP dan Kartu Keluarga.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: PREVIEW DOKUMENTASI -->
+        <section id="galeri" class="galeri-section">
+            <h2 class="judul-seksi">Galeri & Dokumentasi Kegiatan Warga</h2>
+            
+            <div class="galeri-grid">
+                <div class="galeri-card">
+                    <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=600&q=80" alt="Gotong Royong Kebersihan">
+                    <div class="galeri-info">
+                        <span class="galeri-badge">Foto Kegiatan</span>
+                        <h4>Gotong Royong Kebersihan Lingkungan</h4>
+                        <p>Aktivitas pembersihan saluran air dan area fasilitas umum bersama warga RW 02.</p>
+                    </div>
+                </div>
+
+                <div class="galeri-card">
+                    <video controls poster="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80">
+                        <source src="kegiatan-warga.mp4" type="video/mp4">
+                        Browser Anda tidak mendukung pemutar video.
+                    </video>
+                    <div class="galeri-info">
+                        <span class="galeri-badge">Video Dokumentasi</span>
+                        <h4>Kerja Bakti & Penanaman Pohon</h4>
+                        <p>Dokumentasi video penanaman bibit pohon di sepanjang jalan utama Kelurahan Bane.</p>
+                    </div>
+                </div>
+
+                <div class="galeri-card">
+                    <img src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=600&q=80" alt="Kegiatan Posyandu">
+                    <div class="galeri-info">
+                        <span class="galeri-badge">Foto Kegiatan</span>
+                        <h4>Aktivitas Posyandu & Kesehatan Warga</h4>
+                        <p>Pelayanan rutin pemeriksaan kesehatan balita dan lansia oleh kader Kelurahan Bane.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BANNER UNTUK AKSES LAYAR KE-2 (GALERI) -->
+        <section class="banner-galeri">
+            <h3>Ingin Melihat Lebih Banyak Foto Kegiatan & Aparatur Kami?</h3>
+            <p>Kunjungi album galeri khusus untuk melihat kumpulan dokumentasi kegiatan dan foto tim staf kelurahan.</p>
+            <a href="galeri" class="btn-galeri-link">Buka Album Galeri Lengkap 🖼️</a>
+        </section>
+
+        <!-- SECTION: FORM -->
+        <section id="pengajuan" class="form-section">
+            <h2 class="judul-seksi">Formulir Pengajuan Surat Online</h2>
+            
+            <form action="PusatServer" method="POST">
+                <div class="form-group">
+                    <label>Nama Lengkap (Sesuai KTP):</label>
+                    <input type="text" name="nama" placeholder="Masukkan nama..." required>
+                </div>
+
+                <div class="form-group">
+                    <label>NIK (Nomor Induk Kependudukan):</label>
+                    <input type="text" name="nik" placeholder="16 digit NIK..." maxlength="16" pattern="[0-9]{16}" inputmode="numeric" required title="NIK harus terdiri dari 16 digit angka">
+                </div>
+
+                <div class="form-group">
+                    <label>Jenis Surat yang Diajukan:</label>
+                    <select name="jenisSurat">
+                        <option value="SKU">Surat Keterangan Usaha (SKU)</option>
+                        <option value="SKD">Surat Keterangan Domisili</option>
+                        <option value="SPKTP">Pengantar KTP/KK</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-kirim">Kirim Pengajuan Surat</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2026 Pemerintah Kelurahan Bane, Kecamatan Siantar Utara. All Rights Reserved.</p>
+        <p>Help/Support 08887359178</p>
+    </footer>
+
+    <!-- WIDGET PEMUTAR MUSIK CASSETTE (DRAGGABLE) -->
+    <div class="cassette-container" id="draggableCassette">
+        <div class="cassette-body">
+            <div class="search-box-music">
+                <input type="text" id="musicSearchInput" placeholder="Cari lagu..." onmousedown="event.stopPropagation()">
+                <button id="btnSearchMusic" onmousedown="event.stopPropagation()">Cari</button>
+            </div>
+            
+            <div class="search-results-music" id="searchResultsMusic" onmousedown="event.stopPropagation()"></div>
+
+            <div class="cassette-wheels">
+                <div class="wheel"></div>
+                <div class="wheel"></div>
+            </div>
+            <div class="cassette-label" id="songTitleLabel">Playing: Soulmate</div>
+            
+            <div class="progress-container" id="progressContainer">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            
+            <div class="controls-row">
+                <span id="currentTime">00:00</span>
+                <button class="btn-repeat" id="repeatBtn" title="Ulangi Lagu">Ulang</button>
+                <span id="duration">00:00</span>
+            </div>
+        </div>
+    </div>
+
+    <audio id="bgMusic" preload="auto" playsinline>
+        <source src="Soulmate.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // --- LOGIKA KALENDER & JAM REALTIME ---
+            function renderKalender() {
+                const now = new Date();
+                const year = now.getFullYear();
+                const month = now.getMonth();
+                const todayDate = now.getDate();
+
+                const namaBulan = [
+                    "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+                    "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+                ];
+                const namaHari = [
+                    "Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"
+                ];
+
+                document.getElementById("kalenderBulanTahun").innerText = `${namaBulan[month]} ${year}`;
+                document.getElementById("kalenderHariIni").innerText = `${namaHari[now.getDay()]}, ${todayDate} ${namaBulan[month]} ${year}`;
+
+                const kalenderDates = document.getElementById("kalenderDates");
+                kalenderDates.innerHTML = "";
+
+                const firstDayIndex = new Date(year, month, 1).getDay();
+                const lastDay = new Date(year, month + 1, 0).getDate();
+
+                for (let i = 0; i < firstDayIndex; i++) {
+                    const emptyDiv = document.createElement("div");
+                    emptyDiv.classList.add("empty");
+                    kalenderDates.appendChild(emptyDiv);
+                }
+
+                for (let day = 1; day <= lastDay; day++) {
+                    const dateDiv = document.createElement("div");
+                    dateDiv.innerText = day;
+
+                    if (day === todayDate) {
+                        dateDiv.classList.add("today");
+                    }
+
+                    kalenderDates.appendChild(dateDiv);
+                }
+            }
+
+            function updateJam() {
+                const now = new Date();
+                const jam = String(now.getHours()).padStart(2, '0');
+                const menit = String(now.getMinutes()).padStart(2, '0');
+                const detik = String(now.getSeconds()).padStart(2, '0');
+                document.getElementById("jamRealtime").innerText = `${jam}:${menit}:${detik} WIB`;
+            }
+
+            renderKalender();
+            updateJam();
+            setInterval(updateJam, 1000);
+
+            // --- LOGIKA CASSETTE PLAYER (OPTIMAL UNTUK HP) ---
+            const audio = document.getElementById("bgMusic");
+            const progressBar = document.getElementById("progressBar");
+            const progressContainer = document.getElementById("progressContainer");
+            const currentTimeEl = document.getElementById("currentTime");
+            const durationEl = document.getElementById("duration");
+            const wheels = document.querySelectorAll(".wheel");
+            const cassette = document.getElementById("draggableCassette");
+            const repeatBtn = document.getElementById("repeatBtn");
+
+            let isAudioPlaying = false;
+
+            function formatTime(seconds) {
+                let min = Math.floor(seconds / 60);
+                let sec = Math.floor(seconds % 60);
+                if (min < 10) min = "0" + min;
+                if (sec < 10) sec = "0" + sec;
+                return min + ":" + sec;
+            }
+
+            function playAudio() {
+                if (isAudioPlaying) return;
+
+                audio.play().then(() => {
+                    isAudioPlaying = true;
+                    wheels.forEach(w => w.style.animationPlayState = "running");
+                    removeInteractions();
+                }).catch((err) => {
+                    console.log("Autoplay dicegat browser, menunggu gestur pengguna.");
+                });
+            }
+
+            function removeInteractions() {
+                window.removeEventListener("scroll", playAudio);
+                window.removeEventListener("touchstart", playAudio);
+                window.removeEventListener("touchend", playAudio);
+                window.removeEventListener("click", playAudio);
+                window.removeEventListener("keydown", playAudio);
+            }
+
+            window.addEventListener("scroll", playAudio, { passive: true });
+            window.addEventListener("touchstart", playAudio, { passive: true });
+            window.addEventListener("touchend", playAudio, { passive: true });
+            window.addEventListener("click", playAudio, { passive: true });
+            window.addEventListener("keydown", playAudio, { passive: true });
+
+            playAudio();
+
+            audio.addEventListener("loadedmetadata", function() {
+                durationEl.textContent = formatTime(audio.duration);
+            });
+
+            audio.addEventListener("timeupdate", function() {
+                if (audio.duration) {
+                    const percentage = (audio.currentTime / audio.duration) * 100;
+                    progressBar.style.width = percentage + "%";
+                    currentTimeEl.textContent = formatTime(audio.currentTime);
+                    durationEl.textContent = formatTime(audio.duration);
+                }
+            });
+
+            audio.addEventListener("ended", function() {
+                isAudioPlaying = false;
+                wheels.forEach(w => w.style.animationPlayState = "paused");
+            });
+
+            repeatBtn.addEventListener("click", function(e) {
+                e.stopPropagation();
+                audio.currentTime = 0;
+                audio.play();
+                isAudioPlaying = true;
+                wheels.forEach(w => w.style.animationPlayState = "running");
+            });
+
+            progressContainer.addEventListener("click", function(e) {
+                e.stopPropagation();
+                const rect = progressContainer.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                if (audio.duration) {
+                    audio.currentTime = (clickX / width) * audio.duration;
+                    if (audio.paused) {
+                        audio.play();
+                        isAudioPlaying = true;
+                        wheels.forEach(w => w.style.animationPlayState = "running");
+                    }
+                }
+            });
+
+            // --- FITUR CARI LAGU INTERNET (ITUNES API) ---
+            const btnSearchMusic = document.getElementById("btnSearchMusic");
+            const musicSearchInput = document.getElementById("musicSearchInput");
+            const searchResultsMusic = document.getElementById("searchResultsMusic");
+            const songTitleLabel = document.getElementById("songTitleLabel");
+
+            function searchMusic() {
+                const query = musicSearchInput.value.trim();
+                if (!query) return;
+
+                searchResultsMusic.style.display = "block";
+                searchResultsMusic.innerHTML = "<div style='padding:5px; font-size:11px;'>Mencari...</div>";
+
+                fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&media=music&limit=5`)
+                    .then(response => response.json())
+                    .then(data => {
+                        searchResultsMusic.innerHTML = "";
+                        if (data.results.length === 0) {
+                            searchResultsMusic.innerHTML = "<div style='padding:5px; font-size:11px;'>Lagu tidak ditemukan</div>";
+                            return;
+                        }
+
+                        data.results.forEach(song => {
+                            const item = document.createElement("div");
+                            item.className = "music-item";
+                            item.innerHTML = `
+                                <img src="${song.artworkUrl30}" alt="Cover">
+                                <div class="music-item-info">
+                                    <strong>${song.trackName}</strong><br>
+                                    <small>${song.artistName}</small>
+                                </div>
+                            `;
+
+                            item.addEventListener("click", function(e) {
+                                e.stopPropagation();
+                                audio.src = song.previewUrl;
+                                audio.play();
+                                isAudioPlaying = true;
+                                songTitleLabel.innerText = `${song.trackName} - ${song.artistName}`;
+                                wheels.forEach(w => w.style.animationPlayState = "running");
+                                searchResultsMusic.style.display = "none";
+                            });
+
+                            searchResultsMusic.appendChild(item);
+                        });
+                    })
+                    .catch(err => {
+                        searchResultsMusic.innerHTML = "<div style='padding:5px; font-size:11px;'>Gagal memuat lagu</div>";
+                    });
+            }
+
+            btnSearchMusic.addEventListener("click", function(e) {
+                e.stopPropagation();
+                searchMusic();
+            });
+
+            musicSearchInput.addEventListener("keypress", function(e) {
+                if (e.key === "Enter") {
+                    e.stopPropagation();
+                    searchMusic();
+                }
+            });
+
+            // --- FITUR DRAG / GESER ---
+            let isDragging = false;
+            let startX, startY, initialLeft, initialTop;
+
+            function startDrag(e) {
+                if (e.target.closest("#progressContainer") || e.target.closest("#repeatBtn") || e.target.closest(".search-box-music") || e.target.closest(".search-results-music")) return;
+
+                isDragging = true;
+                
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+                startX = clientX;
+                startY = clientY;
+
+                const rect = cassette.getBoundingClientRect();
+                initialLeft = rect.left;
+                initialTop = rect.top;
+
+                cassette.style.bottom = "auto";
+                cassette.style.right = "auto";
+                cassette.style.left = initialLeft + "px";
+                cassette.style.top = initialTop + "px";
+
+                document.addEventListener("mousemove", onDrag);
+                document.addEventListener("touchmove", onDrag, { passive: false });
+                document.addEventListener("mouseup", stopDrag);
+                document.addEventListener("touchend", stopDrag);
+            }
+
+            function onDrag(e) {
+                if (!isDragging) return;
+
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+                const deltaX = clientX - startX;
+                const deltaY = clientY - startY;
+
+                let newLeft = initialLeft + deltaX;
+                let newTop = initialTop + deltaY;
+
+                const maxLeft = window.innerWidth - cassette.offsetWidth;
+                const maxTop = window.innerHeight - cassette.offsetHeight;
+
+                newLeft = Math.max(0, Math.min(newLeft, maxLeft));
+                newTop = Math.max(0, Math.min(newTop, maxTop));
+
+                cassette.style.left = newLeft + "px";
+                cassette.style.top = newTop + "px";
+            }
+
+            function stopDrag() {
+                isDragging = false;
+                document.removeEventListener("mousemove", onDrag);
+                document.removeEventListener("touchmove", onDrag);
+                document.removeEventListener("mouseup", stopDrag);
+                document.removeEventListener("touchend", stopDrag);
+            }
+
+            cassette.addEventListener("mousedown", startDrag);
+            cassette.addEventListener("touchstart", startDrag, { passive: false });
+        });
+    </script>
+</body>
+</html>
