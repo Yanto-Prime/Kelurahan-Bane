@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kalender Kegiatan — Kelurahan Bane</title>
+<title>Kalender — Kelurahan Bane</title>
 <link rel="stylesheet" href="css/style.css">
 <style>
-  /* Tambahan Style untuk Fitur Realtime & Timer */
   .realtime-box {
     background: #f4f7f4;
     border: 1px solid #dcdcdc;
@@ -54,37 +53,6 @@
   .day.today .num {
     color: #2f4d3a;
   }
-  .month-info-box {
-    background: #fff8e1;
-    border-left: 4px solid #c9962c;
-    padding: 12px 16px;
-    margin-top: 20px;
-    border-radius: 4px;
-    font-size: 14px;
-  }
-  .year-summary {
-    margin-top: 25px;
-    background: #ffffff;
-    border: 1px solid #eee;
-    padding: 15px;
-    border-radius: 8px;
-  }
-  .year-summary h4 {
-    margin-bottom: 10px;
-    color: #2f4d3a;
-  }
-  .month-grid-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 8px;
-    font-size: 13px;
-  }
-  .month-grid-item {
-    background: #f9f9f9;
-    padding: 6px 10px;
-    border-radius: 4px;
-    border: 1px solid #eee;
-  }
 </style>
 </head>
 <body>
@@ -106,29 +74,28 @@
 </nav>
 <div class="motif-strip"></div>
 
-<section class="section" style="padding-top:60px;">
-  <div class="section-eyebrow">Agenda Kelurahan</div>
-  <h2>Kalender Kegiatan & Waktu Real-Time</h2>
+<section class="section" style="padding-top:60px; padding-bottom:60px;">
+  <div class="section-eyebrow">Kalender</div>
+  <h2>Waktu &amp; Kalender Real-Time</h2>
 
-  <!-- BOX WAKTU REAL-TIME TIMER -->
+  <!-- JAM DIGITAL REAL-TIME -->
   <div class="realtime-box">
     <div class="realtime-timer" id="liveTimer">00:00:00 WIB</div>
     <div class="realtime-date" id="liveDate">Hari, 00 Bulan 0000</div>
   </div>
 
-  <!-- KONTROL KALENDER & HEADER BULAN -->
+  <!-- KONTROL KALENDER -->
   <div class="cal-controls">
     <button class="cal-btn" onclick="changeMonth(-1)">&larr; Bulan Sebelumnya</button>
     <h3 id="calendarMonthYear" style="margin:0;">-</h3>
     <button class="cal-btn" onclick="changeMonth(1)">Bulan Berikutnya &rarr;</button>
   </div>
 
-  <!-- AREA KALENDER DINAMIS -->
+  <!-- GRID KALENDER -->
   <div class="calendar" id="calendarGrid">
     <div class="dow">Min</div><div class="dow">Sen</div><div class="dow">Sel</div><div class="dow">Rab</div><div class="dow">Kam</div><div class="dow">Jum</div><div class="dow">Sab</div>
-    <!-- Tanggal akan dirender otomatis via JavaScript -->
   </div>
-
+</section>
 
 <footer>
   <strong>Kantor Lurah Bane</strong> — Kecamatan Siantar Utara, Kota Pematangsiantar<br>
@@ -136,14 +103,6 @@
 </footer>
 
 <script>
-  // Data Sample Agenda Kelurahan (Bisa ditambah sesuai kebutuhan)
-  const sampleEvents = {
-    "2026-08-11": "Posyandu Balita & Lansia (08.00 WIB)",
-    "2026-08-17": "Upacara Peringatan HUT Kemerdekaan RI (07.00 WIB)",
-    "2026-08-21": "Gotong Royong Kebersihan Lingkungan (07.30 WIB)",
-    "2026-08-26": "Musyawarah Rutin RT/RW (19.30 WIB)"
-  };
-
   const namaBulan = [
     "Januari", "Februari", "Maret", "April", "Mei", "Juni", 
     "Juli", "Agustus", "September", "Oktober", "November", "Desember"
@@ -151,70 +110,53 @@
 
   const namaHari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
 
-  let currentDate = new Date(); // Menyimpan state tanggal kalender yang dilihat
+  let currentDate = new Date();
 
-  // 1. FITUR REAL-TIME TIMER (JAM DIGITAL)
   function updateLiveTimer() {
     const now = new Date();
-    
-    // Format Jam
     const jam = String(now.getHours()).padStart(2, '0');
     const menit = String(now.getMinutes()).padStart(2, '0');
     const detik = String(now.getSeconds()).padStart(2, '0');
+    
     document.getElementById('liveTimer').innerText = `${jam}:${menit}:${detik} WIB`;
 
-    // Format Tanggal Hari Ini
     const hari = namaHari[now.getDay()];
     const tgl = now.getDate();
     const bln = namaBulan[now.getMonth()];
     const thn = now.getFullYear();
+    
     document.getElementById('liveDate').innerText = `${hari}, ${tgl} ${bln} ${thn}`;
   }
 
-  // Jalankan timer setiap 1 detik (1000ms)
   setInterval(updateLiveTimer, 1000);
   updateLiveTimer();
 
-  // 2. FITUR RENDER KALENDER DINAMIS
   function renderCalendar() {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
 
-    // Set Header Judul Bulan & Tahun
     document.getElementById('calendarMonthYear').innerText = `${namaBulan[month]} ${year}`;
 
     const calendarGrid = document.getElementById('calendarGrid');
     
-    // Hapus tanggal lama (simpan header hari Min-Sab)
     const dowElements = calendarGrid.querySelectorAll('.dow');
     calendarGrid.innerHTML = '';
     dowElements.forEach(dow => calendarGrid.appendChild(dow));
 
-    // Dapatkan hari pertama dalam bulan ini (0 = Minggu, 1 = Senin, dst)
     const firstDayIndex = new Date(year, month, 1).getDay();
-    
-    // Dapatkan jumlah total hari di bulan ini
     const totalDays = new Date(year, month + 1, 0).getDate();
-
     const todayReal = new Date();
 
-    // Tambahkan kotak kosong (empty) untuk offset hari pertama
     for (let i = 0; i < firstDayIndex; i++) {
       const emptyDiv = document.createElement('div');
       emptyDiv.className = 'day empty';
       calendarGrid.appendChild(emptyDiv);
     }
 
-    // Render Tanggal 1 sampai Tanggal Akhir Bulan
-    const agendaListContainer = document.getElementById('agendaList');
-    agendaListContainer.innerHTML = ''; // Clear list agenda
-    let hasAgenda = false;
-
     for (let day = 1; day <= totalDays; day++) {
       const dayDiv = document.createElement('div');
       dayDiv.className = 'day';
 
-      // Cek apakah tanggal hari ini (Highlight Today)
       if (day === todayReal.getDate() && month === todayReal.getMonth() && year === todayReal.getFullYear()) {
         dayDiv.classList.add('today');
       }
@@ -224,70 +166,15 @@
       numSpan.innerText = day;
       dayDiv.appendChild(numSpan);
 
-      // Cek Event/Agenda
-      const formattedMonth = String(month + 1).padStart(2, '0');
-      const formattedDay = String(day).padStart(2, '0');
-      const dateKey = `${year}-${formattedMonth}-${formattedDay}`;
-
-      if (sampleEvents[dateKey]) {
-        dayDiv.classList.add('event');
-        const tagSpan = document.createElement('span');
-        tagSpan.className = 'tag';
-        tagSpan.innerText = sampleEvents[dateKey].split(' ')[0]; // Ambil kata pertama
-        dayDiv.appendChild(tagSpan);
-
-        // Tambahkan ke daftar agenda bawah
-        const li = document.createElement('li');
-        li.innerHTML = `
-          <div class="agenda-date">${day}<br>${namaBulan[month].substring(0,3)}</div>
-          <div>
-            <p>${sampleEvents[dateKey]}</p>
-            <span>Kantor / Wilayah Kelurahan Bane</span>
-          </div>
-        `;
-        agendaListContainer.appendChild(li);
-        hasAgenda = true;
-      }
-
       calendarGrid.appendChild(dayDiv);
     }
-
-    if (!hasAgenda) {
-      agendaListContainer.innerHTML = '<li><div style="padding:10px; color:#777;">Tidak ada agenda khusus pada bulan ini.</div></li>';
-    }
-
-    // UPDATE INFORMASI RENTANG TANGGAL BULAN INI
-    document.getElementById('monthInfoBox').innerHTML = `
-      <strong>Informasi Bulan Ini:</strong> Bulan <strong>${namaBulan[month]} ${year}</strong> dimulai dari 
-      <strong>Tanggal 1</strong> sampai <strong>Tanggal ${totalDays}</strong> (Total ${totalDays} Hari).
-    `;
-
-    // UPDATE LIST RINGKASAN JUMLAH HARI 12 BULAN
-    renderYearSummary(year);
   }
 
-  // 3. FITUR TOMBOL BERPINDAH BULAN
   function changeMonth(offset) {
     currentDate.setMonth(currentDate.getMonth() + offset);
     renderCalendar();
   }
 
-  // 4. FITUR LIST DAFTAR HARI 12 BULAN DALAM 1 TAHUN
-  function renderYearSummary(year) {
-    document.getElementById('yearSummaryTitle').innerText = `Daftar Rentang Tanggal Bulan di Tahun ${year}:`;
-    const summaryList = document.getElementById('yearSummaryList');
-    summaryList.innerHTML = '';
-
-    for (let m = 0; m < 12; m++) {
-      const daysCount = new Date(year, m + 1, 0).getDate();
-      const item = document.createElement('div');
-      item.className = 'month-grid-item';
-      item.innerHTML = `<strong>${namaBulan[m]}</strong><br>Tgl 1 - ${daysCount} (${daysCount} Hari)`;
-      summaryList.appendChild(item);
-    }
-  }
-
-  // Jalankan kalender saat pertama kali di-load
   renderCalendar();
 </script>
 
