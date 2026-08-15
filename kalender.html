@@ -33,7 +33,7 @@
     background: #ffffff;
     border: 1px solid #e5e5e5;
     border-radius: 10px;
-    padding: 24px;
+    padding: 20px 15px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.03);
     margin-top: 20px;
   }
@@ -43,6 +43,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 10px;
     margin-bottom: 20px;
   }
   .cal-header-nav h3 {
@@ -50,6 +51,8 @@
     font-size: 20px;
     color: #2f4d3a;
     margin: 0;
+    text-align: center;
+    flex: 1;
   }
   .cal-btn {
     background: #2f4d3a;
@@ -60,6 +63,7 @@
     cursor: pointer;
     font-weight: 600;
     transition: background 0.2s;
+    white-space: nowrap;
   }
   .cal-btn:hover {
     background: #b5533c;
@@ -69,21 +73,21 @@
   .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 8px;
+    gap: 6px;
   }
   .dow {
     text-align: center;
     font-weight: bold;
     color: #2f4d3a;
     font-size: 13px;
-    padding: 8px 0;
+    padding: 6px 0;
   }
   .day-cell {
-    min-height: 70px;
+    min-height: 60px;
     background: #fdfdfd;
     border: 1px solid #eee;
     border-radius: 6px;
-    padding: 8px;
+    padding: 6px;
     font-size: 14px;
     position: relative;
     display: flex;
@@ -139,13 +143,25 @@
     .menu-toggle.active span:nth-child(3) {
       transform: translateY(-9px) rotate(-45deg);
     }
-    .day-cell {
-      min-height: 45px;
-      padding: 4px;
+
+    /* Penyesuaian Kalender HP */
+    .cal-header-nav {
+      gap: 6px;
+    }
+    .cal-header-nav h3 {
+      font-size: 15px;
+    }
+    .cal-btn {
+      padding: 6px 10px;
       font-size: 12px;
     }
+    .day-cell {
+      min-height: 40px;
+      padding: 3px;
+      font-size: 11px;
+    }
     .clock-time {
-      font-size: 28px;
+      font-size: 24px;
     }
   }
 </style>
