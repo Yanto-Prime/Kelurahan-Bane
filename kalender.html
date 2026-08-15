@@ -30,20 +30,29 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    gap: 12px;
   }
   .cal-btn {
     background: #2f4d3a;
     color: white;
     border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
+    padding: 10px 16px;
+    border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
+    font-size: 14px;
     transition: background 0.2s;
   }
   .cal-btn:hover {
     background: #1e3326;
+  }
+  #calendarMonthYear {
+    margin: 0;
+    font-size: 20px;
+    color: #2f4d3a;
+    text-align: center;
+    word-break: keep-all;
   }
   .day.today {
     background-color: #e8f5e9 !important;
@@ -52,6 +61,34 @@
   }
   .day.today .num {
     color: #2f4d3a;
+  }
+
+  /* KUSUS OPTIMASI TAMPILAN HP (MOBILE VIEW) */
+  @media (max-width: 600px) {
+    .realtime-timer {
+      font-size: 22px;
+    }
+    .cal-controls {
+      flex-direction: column; /* Mengubah tombol & judul jadi berbaris ke bawah */
+      gap: 12px;
+    }
+    .cal-btn {
+      width: 100%; /* Tombol jadi full width rapi di HP */
+      padding: 12px;
+    }
+    #calendarMonthYear {
+      order: -1; /* Menempatkan Nama Bulan di paling atas */
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+    .calendar {
+      gap: 4px;
+      padding: 8px;
+    }
+    .dow, .day {
+      font-size: 13px;
+      padding: 8px 2px;
+    }
   }
 </style>
 </head>
@@ -74,9 +111,9 @@
 </nav>
 <div class="motif-strip"></div>
 
-<section class="section" style="padding-top:60px; padding-bottom:60px;">
+<section class="section" style="padding-top:40px; padding-bottom:60px;">
   <div class="section-eyebrow">Kalender</div>
-  <h2>Waktu &amp; Kalender </h2>
+  <h2>Waktu &amp; Kalender Real-Time</h2>
 
   <!-- JAM DIGITAL REAL-TIME -->
   <div class="realtime-box">
@@ -84,10 +121,10 @@
     <div class="realtime-date" id="liveDate">Hari, 00 Bulan 0000</div>
   </div>
 
-  <!-- KONTROL KALENDER -->
+  <!-- KONTROL KALENDER RESPONSIV -->
   <div class="cal-controls">
     <button class="cal-btn" onclick="changeMonth(-1)">&larr; Bulan Sebelumnya</button>
-    <h3 id="calendarMonthYear" style="margin:0;">-</h3>
+    <h3 id="calendarMonthYear">-</h3>
     <button class="cal-btn" onclick="changeMonth(1)">Bulan Berikutnya &rarr;</button>
   </div>
 
