@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Beranda — Kelurahan Bane</title>
+<title>Kelurahan Bane — Kecamatan Siantar Utara, Kota Pematangsiantar</title>
 <link rel="stylesheet" href="css/style.css">
 <style>
+  /* Style Tombol Burger Menu */
   .menu-toggle {
     display: none;
     flex-direction: column;
@@ -25,8 +26,34 @@
     border-radius: 3px;
     transition: all 0.3s ease;
   }
+
+  .maps-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 1px solid #2f4d3a;
+    background: #fff;
+  }
+  .maps-container iframe {
+    width: 100%;
+    height: 350px;
+    border: 0;
+    display: block;
+  }
+  .address-card {
+    margin-top: -30px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Responsif Layar HP (Mobile View) */
   @media (max-width: 768px) {
-    .menu-toggle { display: flex; }
+    .menu-toggle {
+      display: flex;
+    }
     .nav-links {
       display: none;
       flex-direction: column;
@@ -40,17 +67,25 @@
       border-top: 1px solid #eee;
       gap: 12px;
     }
-    .nav-links.active { display: flex; }
-    .menu-toggle.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-    .menu-toggle.active span:nth-child(2) { opacity: 0; }
-    .menu-toggle.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+    .nav-links.active {
+      display: flex;
+    }
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
   }
 </style>
 </head>
 <body>
 
 <nav class="navbar">
-  <a href="index.html" class="brand">
+  <a href="/" class="brand">
     <svg class="crest" viewBox="0 0 40 40" fill="none">
       <path d="M20 4 C20 4 8 14 8 24 C8 30 13 34 20 34 C27 34 32 30 32 24 C32 14 20 4 20 4Z" fill="#2f4d3a"/>
       <circle cx="20" cy="22" r="4" fill="#c9962c"/>
@@ -58,6 +93,7 @@
     <span>Kelurahan Bane<br><small>Kec. Siantar Utara — Kota Pematangsiantar</small></span>
   </a>
 
+  <!-- TOMBOL BURGER MENU -->
   <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
     <span></span>
     <span></span>
@@ -65,18 +101,105 @@
   </button>
 
   <div class="nav-links" id="navLinks">
-    <a href="index.html" class="active">Beranda</a>
-    <a href="struktur.html">Struktur Organisasi</a>
-    <a href="kalender.html">Kalender</a>
-    <a href="album.html">Album</a>
+    <a href="/" class="active">Beranda</a>
+    <a href="struktur">Struktur Organisasi</a>
+    <a href="kalender">Kalender</a>
+    <a href="album">Album</a>
   </div>
 </nav>
 <div class="motif-strip"></div>
 
-<section class="section" style="padding-top:60px;">
-  <div class="section-eyebrow">Selamat Datang</div>
-  <h2>Pelayanan Digital Kelurahan Bane</h2>
-  <p>Pusat informasi resmi dan pelayanan masyarakat Kelurahan Bane, Kecamatan Siantar Utara, Kota Pematangsiantar.</p>
+<div class="hero-banner" id="kantor-banner">
+  <div class="hero-banner-content">
+    <div class="eyebrow">Pemerintah Kota Pematangsiantar</div>
+    <h1>Kantor Lurah Bane</h1>
+    <p>Melayani masyarakat Kelurahan Bane, Kecamatan Siantar Utara, dengan pelayanan administrasi yang cepat, transparan, dan ramah bagi seluruh warga.</p>
+  </div>
+</div>
+
+<section class="hero" style="padding-bottom: 40px;">
+  <div class="maps-container">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d996.089585062831!2d99.0577904!3d2.9701832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3031847d4d1b365b%3A0x321d498aca69a822!2sKantor%20Kelurahan%20Bane!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+  <div class="address-card">
+    <div>
+      <h3>Alamat Kantor</h3>
+      <p>Jl. Sungkit No.62, Bane, Siantar Utara, Pematang Siantar , Sumatra Utara 21143</p>
+      <small><a href="https://maps.app.goo.gl/4qmF6XSGujoeEQTK7" target="_blank" style="color: #2f4d3a; text-decoration: underline;">Buka Rute di Google Maps &rarr;</a></small>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-eyebrow">Tentang Kami</div>
+  <h2>Visi &amp; Misi Kelurahan Bane</h2>
+
+  <div class="visi-box">
+    <h3>Visi</h3>
+    <p>Terwujudnya Kelurahan Bane yang tertib administrasi, masyarakat sejahtera, dan lingkungan yang bersih, aman, serta harmonis dalam bingkai gotong royong.</p>
+  </div>
+
+  <ul class="misi-list">
+    <li>
+      <span class="num">01</span>
+      <p>Meningkatkan kualitas pelayanan administrasi kependudukan yang cepat, mudah, dan transparan bagi seluruh warga.</p>
+    </li>
+    <li>
+      <span class="num">02</span>
+      <p>Mendorong partisipasi aktif masyarakat dalam pembangunan lingkungan melalui musyawarah dan gotong royong.</p>
+    </li>
+    <li>
+      <span class="num">03</span>
+      <p>Menciptakan lingkungan kelurahan yang bersih, tertib, dan nyaman bagi seluruh warga dan generasi mendatang.</p>
+    </li>
+    <li>
+      <span class="num">04</span>
+      <p>Memperkuat sinergi antara perangkat kelurahan, tokoh masyarakat, dan lembaga kemasyarakatan setempat.</p>
+    </li>
+    <li>
+      <span class="num">05</span>
+      <p>Mendukung pemberdayaan ekonomi warga melalui pembinaan UMKM dan potensi lokal kelurahan.</p>
+    </li>
+  </ul>
+</section>
+
+<div class="motif-strip"></div>
+
+<section class="section">
+  <div class="section-eyebrow">Layanan</div>
+  <h2>Pelayanan Kantor Kelurahan</h2>
+  <div class="grid-3">
+    <div class="card">
+      <h3>Surat Keterangan Domisili</h3>
+      <p>Pengurusan surat keterangan tempat tinggal untuk keperluan administrasi.</p>
+    </div>
+    <div class="card">
+      <h3>Surat Pengantar KK/KTP</h3>
+      <p>Pengantar untuk pengurusan Kartu Keluarga dan KTP di Dinas Dukcapil.</p>
+    </div>
+    <div class="card">
+      <h3>Surat Keterangan Usaha</h3>
+      <p>Untuk warga yang membutuhkan legalitas usaha mikro/kecil.</p>
+    </div>
+    <div class="card">
+      <h3>Surat Keterangan Tidak Mampu</h3>
+      <p>Membantu warga kurang mampu mengakses program bantuan sosial.</p>
+    </div>
+    <div class="card">
+      <h3>Legalisir Dokumen</h3>
+      <p>Pengesahan salinan dokumen kependudukan warga kelurahan.</p>
+    </div>
+    <div class="card">
+      <h3>Informasi &amp; Pengaduan</h3>
+      <p>Sampaikan aspirasi, pengaduan, atau informasi seputar kelurahan.</p>
+    </div>
+  </div>
 </section>
 
 <footer>
@@ -84,9 +207,11 @@
   Melayani dengan sepenuh hati untuk warga Kelurahan Bane.
 </footer>
 
+<!-- SCRIPT BURGER MENU TOGGLE -->
 <script>
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.getElementById('navLinks');
+
   if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', () => {
       menuToggle.classList.toggle('active');
@@ -94,5 +219,6 @@
     });
   }
 </script>
+
 </body>
 </html>
