@@ -3,10 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kelurahan Bane — Kecamatan Siantar Utara, Kota Pematangsiantar</title>
+<title>Kelurahan Bane — Kota Pematangsiantar</title>
 <link rel="stylesheet" href="css/style.css">
 <style>
-  /* Style Tombol Burger Menu */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Navigation & Burger Menu Style */
   .menu-toggle {
     display: none;
     flex-direction: column;
@@ -27,29 +31,178 @@
     transition: all 0.3s ease;
   }
 
-  .maps-container {
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    border: 1px solid #2f4d3a;
-    background: #fff;
-  }
-  .maps-container iframe {
-    width: 100%;
-    height: 350px;
-    border: 0;
-    display: block;
-  }
-  .address-card {
-    margin-top: -30px;
-    position: relative;
-    z-index: 2;
+  /* Section Spacing & Layout */
+  .page-section {
+    padding: 60px 20px;
+    border-bottom: 1px solid #eee;
   }
 
-  /* Responsif Layar HP (Mobile View) */
+  /* Style Struktur Organisasi */
+  .org-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 0;
+  }
+  .org-node {
+    background: #ffffff;
+    border: 1px solid #2f4d3a;
+    border-radius: 6px;
+    padding: 12px 20px;
+    text-align: center;
+    min-width: 180px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+  .org-node.top {
+    background: #2f4d3a;
+    color: #ffffff;
+  }
+  .org-node.top .name {
+    color: #e0e0e0;
+  }
+  .org-node .role {
+    font-weight: bold;
+    font-size: 15px;
+  }
+  .org-node .name {
+    font-size: 13px;
+    color: #666;
+    margin-top: 4px;
+  }
+  .org-line {
+    width: 2px;
+    height: 20px;
+    background: #2f4d3a;
+  }
+  .org-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    position: relative;
+    padding-top: 20px;
+  }
+  .org-row::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: #2f4d3a;
+  }
+  .org-branch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  .org-branch::before {
+    content: '';
+    width: 2px;
+    height: 20px;
+    background: #2f4d3a;
+    margin-top: -20px;
+  }
+
+  /* Style Kalender */
+  .calendar-card {
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    margin-top: 25px;
+  }
+  .event-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .event-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+  }
+  .event-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .event-date {
+    background: #2f4d3a;
+    color: #ffffff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 65px;
+  }
+  .event-date .day {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1;
+  }
+  .event-date .month {
+    font-size: 11px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .event-details h3 {
+    margin: 0 0 4px 0;
+    color: #2f4d3a;
+    font-size: 16px;
+  }
+  .event-details p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+  }
+
+  /* Style Album */
+  .album-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 25px;
+  }
+  .album-cover {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .album-cover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  }
+  .album-cover .thumb {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    color: white;
+  }
+  .album-cover .info {
+    padding: 16px;
+  }
+  .album-cover .info h3 {
+    margin: 0 0 6px 0;
+    color: #2f4d3a;
+  }
+  .album-cover .info p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+  }
+
+  /* Responsive Mobile View */
   @media (max-width: 768px) {
     .menu-toggle {
       display: flex;
@@ -79,13 +232,41 @@
     .menu-toggle.active span:nth-child(3) {
       transform: translateY(-9px) rotate(-45deg);
     }
+    .org-row {
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      padding-top: 0;
+    }
+    .org-row::before {
+      display: none;
+    }
+    .org-branch {
+      width: 100%;
+      max-width: 260px;
+    }
+    .org-branch::before {
+      content: '';
+      width: 2px;
+      height: 15px;
+      background: #2f4d3a;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    .org-node {
+      width: 100%;
+    }
+    .album-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
 </head>
 <body>
 
+<!-- NAVBAR (HASH LINK ROUTING) -->
 <nav class="navbar">
-  <a href="/" class="brand">
+  <a href="#beranda" class="brand">
     <svg class="crest" viewBox="0 0 40 40" fill="none">
       <path d="M20 4 C20 4 8 14 8 24 C8 30 13 34 20 34 C27 34 32 30 32 24 C32 14 20 4 20 4Z" fill="#2f4d3a"/>
       <circle cx="20" cy="22" r="4" fill="#c9962c"/>
@@ -93,7 +274,6 @@
     <span>Kelurahan Bane<br><small>Kec. Siantar Utara — Kota Pematangsiantar</small></span>
   </a>
 
-  <!-- TOMBOL BURGER MENU -->
   <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
     <span></span>
     <span></span>
@@ -101,103 +281,138 @@
   </button>
 
   <div class="nav-links" id="navLinks">
-    <a href="/" class="active">Beranda</a>
-    <a href="struktur">Struktur Organisasi</a>
-    <a href="kalender">Kalender</a>
-    <a href="album">Album</a>
+    <a href="#beranda">Beranda</a>
+    <a href="#struktur">Struktur Organisasi</a>
+    <a href="#kalender">Kalender</a>
+    <a href="#album">Album</a>
   </div>
 </nav>
 <div class="motif-strip"></div>
 
-<div class="hero-banner" id="kantor-banner">
-  <div class="hero-banner-content">
-    <div class="eyebrow">Pemerintah Kota Pematangsiantar</div>
-    <h1>Kantor Lurah Bane</h1>
-    <p>Melayani masyarakat Kelurahan Bane, Kecamatan Siantar Utara, dengan pelayanan administrasi yang cepat, transparan, dan ramah bagi seluruh warga.</p>
-  </div>
-</div>
+<!-- SECTION BERANDA -->
+<section id="beranda" class="page-section">
+  <div class="section-eyebrow">Selamat Datang</div>
+  <h2>Website Resmi Kelurahan Bane</h2>
+  <p>Pusat informasi dan pelayanan digital bagi warga Kelurahan Bane, Kecamatan Siantar Utara, Kota Pematangsiantar.</p>
+</section>
 
-<section class="hero" style="padding-bottom: 40px;">
-  <div class="maps-container">
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d996.089585062831!2d99.0577904!3d2.9701832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3031847d4d1b365b%3A0x321d498aca69a822!2sKantor%20Kelurahan%20Bane!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
-      allowfullscreen="" 
-      loading="lazy" 
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-  </div>
+<!-- SECTION STRUKTUR ORGANISASI -->
+<section id="struktur" class="page-section">
+  <div class="section-eyebrow">Kepengurusan</div>
+  <h2>Struktur Organisasi Kelurahan Bane</h2>
 
-  <div class="address-card">
-    <div>
-      <h3>Alamat Kantor</h3>
-      <p>Jl. Sungkit No.62, Bane, Siantar Utara, Pematang Siantar , Sumatra Utara 21143</p>
-      <small><a href="https://maps.app.goo.gl/4qmF6XSGujoeEQTK7" target="_blank" style="color: #2f4d3a; text-decoration: underline;">Buka Rute di Google Maps &rarr;</a></small>
+  <div class="org-chart">
+    <div class="org-node top">
+      <div class="role">Lurah</div>
+      <div class="name">(Nama Lurah)</div>
+    </div>
+    <div class="org-line"></div>
+    <div class="org-node">
+      <div class="role">Sekretaris Lurah</div>
+      <div class="name">(Nama Sekretaris)</div>
+    </div>
+    <div class="org-line"></div>
+
+    <div class="org-row">
+      <div class="org-branch">
+        <div class="org-node">
+          <div class="role">Kasi Pemerintahan</div>
+          <div class="name">(Nama Staf)</div>
+        </div>
+      </div>
+      <div class="org-branch">
+        <div class="org-node">
+          <div class="role">Kasi Pembangunan</div>
+          <div class="name">(Nama Staf)</div>
+        </div>
+      </div>
+      <div class="org-branch">
+        <div class="org-node">
+          <div class="role">Kasi Kesejahteraan Sosial</div>
+          <div class="name">(Nama Staf)</div>
+        </div>
+      </div>
+      <div class="org-branch">
+        <div class="org-node">
+          <div class="role">Kasi Trantib</div>
+          <div class="name">(Nama Staf)</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="section-eyebrow">Tentang Kami</div>
-  <h2>Visi &amp; Misi Kelurahan Bane</h2>
+<!-- SECTION KALENDER -->
+<section id="kalender" class="page-section">
+  <div class="section-eyebrow">Agenda</div>
+  <h2>Kalender Kegiatan Kelurahan</h2>
 
-  <div class="visi-box">
-    <h3>Visi</h3>
-    <p>Terwujudnya Kelurahan Bane yang tertib administrasi, masyarakat sejahtera, dan lingkungan yang bersih, aman, serta harmonis dalam bingkai gotong royong.</p>
+  <div class="calendar-card">
+    <div class="event-list">
+      <div class="event-item">
+        <div class="event-date">
+          <div class="day">17</div>
+          <div class="month">Agt</div>
+        </div>
+        <div class="event-details">
+          <h3>Upacara &amp; Pesta Rakyat HUT RI</h3>
+          <p>Pelaksanaan upacara bendera dilanjutkan perlombaan warga se-Kelurahan Bane.</p>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date">
+          <div class="day">24</div>
+          <div class="month">Agt</div>
+        </div>
+        <div class="event-details">
+          <h3>Gotong Royong Massal</h3>
+          <p>Pembersihan saluran drainase dan fasilitas umum di lingkungan RW 01 - RW 04.</p>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date">
+          <div class="day">05</div>
+          <div class="month">Sep</div>
+        </div>
+        <div class="event-details">
+          <h3>Pelayanan Posyandu Balita &amp; Lansia</h3>
+          <p>Pemeriksaan kesehatan rutin dan pembagian makanan tambahan di Kantor Kelurahan.</p>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <ul class="misi-list">
-    <li>
-      <span class="num">01</span>
-      <p>Meningkatkan kualitas pelayanan administrasi kependudukan yang cepat, mudah, dan transparan bagi seluruh warga.</p>
-    </li>
-    <li>
-      <span class="num">02</span>
-      <p>Mendorong partisipasi aktif masyarakat dalam pembangunan lingkungan melalui musyawarah dan gotong royong.</p>
-    </li>
-    <li>
-      <span class="num">03</span>
-      <p>Menciptakan lingkungan kelurahan yang bersih, tertib, dan nyaman bagi seluruh warga dan generasi mendatang.</p>
-    </li>
-    <li>
-      <span class="num">04</span>
-      <p>Memperkuat sinergi antara perangkat kelurahan, tokoh masyarakat, dan lembaga kemasyarakatan setempat.</p>
-    </li>
-    <li>
-      <span class="num">05</span>
-      <p>Mendukung pemberdayaan ekonomi warga melalui pembinaan UMKM dan potensi lokal kelurahan.</p>
-    </li>
-  </ul>
 </section>
 
-<div class="motif-strip"></div>
+<!-- SECTION ALBUM -->
+<section id="album" class="page-section">
+  <div class="section-eyebrow">Dokumentasi</div>
+  <h2>Album Kegiatan Kelurahan</h2>
 
-<section class="section">
-  <div class="section-eyebrow">Layanan</div>
-  <h2>Pelayanan Kantor Kelurahan</h2>
-  <div class="grid-3">
-    <div class="card">
-      <h3>Surat Keterangan Domisili</h3>
-      <p>Pengurusan surat keterangan tempat tinggal untuk keperluan administrasi.</p>
+  <div class="album-grid">
+    <div class="album-cover">
+      <div class="thumb" style="background:#b5533c;">🇮🇩</div>
+      <div class="info">
+        <h3>Peringatan HUT RI</h3>
+        <p>Upacara &amp; lomba 17 Agustus</p>
+      </div>
     </div>
-    <div class="card">
-      <h3>Surat Pengantar KK/KTP</h3>
-      <p>Pengantar untuk pengurusan Kartu Keluarga dan KTP di Dinas Dukcapil.</p>
+
+    <div class="album-cover">
+      <div class="thumb" style="background:#2f4d3a;">🧹</div>
+      <div class="info">
+        <h3>Gotong Royong</h3>
+        <p>Kebersihan lingkungan warga</p>
+      </div>
     </div>
-    <div class="card">
-      <h3>Surat Keterangan Usaha</h3>
-      <p>Untuk warga yang membutuhkan legalitas usaha mikro/kecil.</p>
-    </div>
-    <div class="card">
-      <h3>Surat Keterangan Tidak Mampu</h3>
-      <p>Membantu warga kurang mampu mengakses program bantuan sosial.</p>
-    </div>
-    <div class="card">
-      <h3>Legalisir Dokumen</h3>
-      <p>Pengesahan salinan dokumen kependudukan warga kelurahan.</p>
-    </div>
-    <div class="card">
-      <h3>Informasi &amp; Pengaduan</h3>
-      <p>Sampaikan aspirasi, pengaduan, atau informasi seputar kelurahan.</p>
+
+    <div class="album-cover">
+      <div class="thumb" style="background:#c9962c;">👶</div>
+      <div class="info">
+        <h3>Posyandu</h3>
+        <p>Kegiatan kesehatan balita &amp; lansia</p>
+      </div>
     </div>
   </div>
 </section>
@@ -207,7 +422,6 @@
   Melayani dengan sepenuh hati untuk warga Kelurahan Bane.
 </footer>
 
-<!-- SCRIPT BURGER MENU TOGGLE -->
 <script>
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.getElementById('navLinks');
@@ -216,6 +430,14 @@
     menuToggle.addEventListener('click', () => {
       menuToggle.classList.toggle('active');
       navLinks.classList.toggle('active');
+    });
+
+    // Menutup menu mobile saat item nav diklik
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
     });
   }
 </script>
