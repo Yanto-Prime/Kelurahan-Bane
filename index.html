@@ -5,6 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kelurahan Bane — Kecamatan Siantar Utara, Kota Pematangsiantar</title>
 <link rel="stylesheet" href="css/style.css">
+<style>
+  .maps-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 1px solid #2f4d3a;
+    background: #fff;
+  }
+  .maps-container iframe {
+    width: 100%;
+    height: 350px;
+    border: 0;
+    display: block;
+  }
+  .address-card {
+    margin-top: -30px;
+    position: relative;
+    z-index: 2;
+  }
+</style>
 </head>
 <body>
 
@@ -26,10 +49,6 @@
 <div class="motif-strip"></div>
 
 <div class="hero-banner" id="kantor-banner">
-  <div class="placeholder-hint">
-    <span class="cam">📷</span>
-    <span>Ganti dengan foto Kantor Lurah Bane<br>(edit CSS #kantor-banner atau lihat catatan di bawah)</span>
-  </div>
   <div class="hero-banner-content">
     <div class="eyebrow">Pemerintah Kota Pematangsiantar</div>
     <h1>Kantor Lurah Bane</h1>
@@ -37,17 +56,20 @@
   </div>
 </div>
 
-<section class="hero">
-  <svg class="hero-roof" viewBox="0 0 220 120" fill="none">
-    <path d="M10 110 Q 30 30 60 60 Q 90 -10 110 40 Q 130 -10 160 60 Q 190 30 210 110 Z" fill="#2f4d3a"/>
-    <rect x="30" y="105" width="160" height="10" rx="2" fill="#b5533c"/>
-  </svg>
+<section class="hero" style="padding-bottom: 40px;">
+  <div class="maps-container">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15931.294116035881!2d99.0494!3d2.9731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3031844efabdb543%3A0x6b77224f9f727fb1!2sBane%2C%20Kec.%20Siantar%20Utara%2C%20Kota%20Pematang%20Siantar%2C%20Sumatera%20Utara!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
   <div class="address-card">
-    <span class="icon"></span>
     <div>
       <h3>Alamat Kantor</h3>
-      <p>Jl. (nama jalan kantor lurah), Kelurahan Bane, Kec. Siantar Utara, Kota Pematangsiantar, Sumatera Utara</p>
-      <span class="placeholder-note">*Alamat contoh — ganti dengan alamat resmi kantor kelurahan</span>
+      <p>Jl. Pdt. J. Wismar Saragih, Kelurahan Bane, Kec. Siantar Utara, Kota Pematangsiantar, Sumatera Utara</p>
     </div>
   </div>
 </section>
@@ -89,36 +111,30 @@
 
 <section class="section">
   <div class="section-eyebrow">Layanan</div>
-  <h2>Yang Bisa Diurus di Kantor Kelurahan</h2>
+  <h2>Pelayanan Kantor Kelurahan</h2>
   <div class="grid-3">
     <div class="card">
-      <span class="icon">📄</span>
       <h3>Surat Keterangan Domisili</h3>
       <p>Pengurusan surat keterangan tempat tinggal untuk keperluan administrasi.</p>
     </div>
     <div class="card">
-      <span class="icon">🏠</span>
       <h3>Surat Pengantar KK/KTP</h3>
       <p>Pengantar untuk pengurusan Kartu Keluarga dan KTP di Dinas Dukcapil.</p>
     </div>
     <div class="card">
-      <span class="icon">💼</span>
       <h3>Surat Keterangan Usaha</h3>
       <p>Untuk warga yang membutuhkan legalitas usaha mikro/kecil.</p>
     </div>
     <div class="card">
-      <span class="icon">🤝</span>
       <h3>Surat Keterangan Tidak Mampu</h3>
       <p>Membantu warga kurang mampu mengakses program bantuan sosial.</p>
     </div>
     <div class="card">
-      <span class="icon">✍️</span>
       <h3>Legalisir Dokumen</h3>
       <p>Pengesahan salinan dokumen kependudukan warga kelurahan.</p>
     </div>
     <div class="card">
-      <span class="icon">📢</span>
-      <h3>Informasi & Pengaduan</h3>
+      <h3>Informasi &amp; Pengaduan</h3>
       <p>Sampaikan aspirasi, pengaduan, atau informasi seputar kelurahan.</p>
     </div>
   </div>
