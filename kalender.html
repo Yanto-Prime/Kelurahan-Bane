@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kalender — Kelurahan Bane</title>
+<title>Kalender Kegiatan — Kelurahan Bane</title>
 <link rel="stylesheet" href="css/style.css">
 <style>
   /* Style Tombol Burger Menu */
@@ -27,64 +27,62 @@
     transition: all 0.3s ease;
   }
 
-  .realtime-box {
-    background: #f4f7f4;
-    border: 1px solid #dcdcdc;
+  /* Base Style Kalender & Agenda */
+  .calendar-card {
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    margin-top: 25px;
+  }
+  .event-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+  }
+  .event-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+  }
+  .event-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .event-date {
+    background: #2f4d3a;
+    color: #ffffff;
+    padding: 10px 14px;
     border-radius: 8px;
-    padding: 15px;
     text-align: center;
-    margin-bottom: 25px;
+    min-width: 65px;
   }
-  .realtime-timer {
-    font-size: 28px;
+  .event-date .day {
+    font-size: 20px;
     font-weight: bold;
-    color: #2f4d3a;
-    letter-spacing: 1px;
-    font-family: monospace;
+    line-height: 1;
   }
-  .realtime-date {
-    font-size: 14px;
-    color: #555;
+  .event-date .month {
+    font-size: 11px;
+    text-transform: uppercase;
     margin-top: 4px;
   }
-  .cal-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    gap: 12px;
+  .event-details h3 {
+    margin: 0 0 4px 0;
+    color: #2f4d3a;
+    font-size: 16px;
   }
-  .cal-btn {
-    background: #2f4d3a;
-    color: white;
-    border: none;
-    padding: 10px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 14px;
-    transition: background 0.2s;
-  }
-  .cal-btn:hover {
-    background: #1e3326;
-  }
-  #calendarMonthYear {
+  .event-details p {
     margin: 0;
-    font-size: 20px;
-    color: #2f4d3a;
-    text-align: center;
-    word-break: keep-all;
-  }
-  .day.today {
-    background-color: #e8f5e9 !important;
-    border: 2px solid #2f4d3a;
-    font-weight: bold;
-  }
-  .day.today .num {
-    color: #2f4d3a;
+    font-size: 14px;
+    color: #666;
   }
 
-  /* KHUSUS OPTIMASI TAMPILAN HP (MOBILE VIEW) */
+  /* Responsif khusus Layar HP (Mobile View) */
   @media (max-width: 768px) {
     .menu-toggle {
       display: flex;
@@ -114,38 +112,13 @@
     .menu-toggle.active span:nth-child(3) {
       transform: translateY(-9px) rotate(-45deg);
     }
-
-    .realtime-timer {
-      font-size: 22px;
-    }
-    .cal-controls {
-      flex-direction: column;
-      gap: 12px;
-    }
-    .cal-btn {
-      width: 100%;
-      padding: 12px;
-    }
-    #calendarMonthYear {
-      order: -1;
-      font-size: 22px;
-      margin-bottom: 4px;
-    }
-    .calendar {
-      gap: 4px;
-      padding: 8px;
-    }
-    .dow, .day {
-      font-size: 13px;
-      padding: 8px 2px;
-    }
   }
 </style>
 </head>
 <body>
 
 <nav class="navbar">
-  <a href="/" class="brand">
+  <a href="index.html" class="brand">
     <svg class="crest" viewBox="0 0 40 40" fill="none">
       <path d="M20 4 C20 4 8 14 8 24 C8 30 13 34 20 34 C27 34 32 30 32 24 C32 14 20 4 20 4Z" fill="#2f4d3a"/>
       <circle cx="20" cy="22" r="4" fill="#c9962c"/>
@@ -161,34 +134,53 @@
   </button>
 
   <div class="nav-links" id="navLinks">
-    <a href="/">Beranda</a>
-    <a href="struktur">Struktur Organisasi</a>
-    <a href="kalender" class="active">Kalender</a>
-    <a href="album">Album</a>
+    <a href="index.html">Beranda</a>
+    <a href="struktur.html">Struktur Organisasi</a>
+    <a href="kalender.html" class="active">Kalender</a>
+    <a href="album.html">Album</a>
   </div>
 </nav>
 <div class="motif-strip"></div>
 
-<section class="section" style="padding-top:40px; padding-bottom:60px;">
-  <div class="section-eyebrow">Kalender</div>
-  <h2>Waktu &amp; Kalender Real-Time</h2>
+<section class="section" style="padding-top:60px; padding-bottom:60px;">
+  <div class="section-eyebrow">Agenda</div>
+  <h2>Kalender Kegiatan Kelurahan</h2>
 
-  <!-- JAM DIGITAL REAL-TIME -->
-  <div class="realtime-box">
-    <div class="realtime-timer" id="liveTimer">00:00:00 WIB</div>
-    <div class="realtime-date" id="liveDate">Hari, 00 Bulan 0000</div>
-  </div>
+  <div class="calendar-card">
+    <div class="event-list">
+      <div class="event-item">
+        <div class="event-date">
+          <div class="day">17</div>
+          <div class="month">Agt</div>
+        </div>
+        <div class="event-details">
+          <h3>Upacara &amp; Pesta Rakyat HUT RI</h3>
+          <p>Pelaksanaan upacara bendera dilanjutkan perlombaan warga se-Kelurahan Bane.</p>
+        </div>
+      </div>
 
-  <!-- KONTROL KALENDER RESPONSIF -->
-  <div class="cal-controls">
-    <button class="cal-btn" onclick="changeMonth(-1)">&larr; Bulan Sebelumnya</button>
-    <h3 id="calendarMonthYear">-</h3>
-    <button class="cal-btn" onclick="changeMonth(1)">Bulan Berikutnya &rarr;</button>
-  </div>
+      <div class="event-item">
+        <div class="event-date">
+          <div class="day">24</div>
+          <div class="month">Agt</div>
+        </div>
+        <div class="event-details">
+          <h3>Gotong Royong Massal</h3>
+          <p>Pembersihan saluran drainase dan fasilitas umum di lingkungan RW 01 - RW 04.</p>
+        </div>
+      </div>
 
-  <!-- GRID KALENDER -->
-  <div class="calendar" id="calendarGrid">
-    <div class="dow">Min</div><div class="dow">Sen</div><div class="dow">Sel</div><div class="dow">Rab</div><div class="dow">Kam</div><div class="dow">Jum</div><div class="dow">Sab</div>
+      <div class="event-item">
+        <div class="event-date">
+          <div class="day">05</div>
+          <div class="month">Sep</div>
+        </div>
+        <div class="event-details">
+          <h3>Pelayanan Posyandu Balita &amp; Lansia</h3>
+          <p>Pemeriksaan kesehatan rutin dan pembagian makanan tambahan di Kantor Kelurahan.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -197,8 +189,8 @@
   Melayani dengan sepenuh hati untuk warga Kelurahan Bane.
 </footer>
 
+<!-- SCRIPT BURGER MENU TOGGLE -->
 <script>
-  // TOGGLE BURGER MENU
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.getElementById('navLinks');
 
@@ -208,81 +200,6 @@
       navLinks.classList.toggle('active');
     });
   }
-
-  // SCRIPT KALENDER & REALTIME TIMER
-  const namaBulan = [
-    "Januari", "Februari", "Maret", "April", "Mei", "Juni", 
-    "Juli", "Agustus", "September", "Oktober", "November", "Desember"
-  ];
-
-  const namaHari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
-
-  let currentDate = new Date();
-
-  function updateLiveTimer() {
-    const now = new Date();
-    const jam = String(now.getHours()).padStart(2, '0');
-    const menit = String(now.getMinutes()).padStart(2, '0');
-    const detik = String(now.getSeconds()).padStart(2, '0');
-    
-    document.getElementById('liveTimer').innerText = `${jam}:${menit}:${detik} WIB`;
-
-    const hari = namaHari[now.getDay()];
-    const tgl = now.getDate();
-    const bln = namaBulan[now.getMonth()];
-    const thn = now.getFullYear();
-    
-    document.getElementById('liveDate').innerText = `${hari}, ${tgl} ${bln} ${thn}`;
-  }
-
-  setInterval(updateLiveTimer, 1000);
-  updateLiveTimer();
-
-  function renderCalendar() {
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth();
-
-    document.getElementById('calendarMonthYear').innerText = `${namaBulan[month]} ${year}`;
-
-    const calendarGrid = document.getElementById('calendarGrid');
-    
-    const dowElements = calendarGrid.querySelectorAll('.dow');
-    calendarGrid.innerHTML = '';
-    dowElements.forEach(dow => calendarGrid.appendChild(dow));
-
-    const firstDayIndex = new Date(year, month, 1).getDay();
-    const totalDays = new Date(year, month + 1, 0).getDate();
-    const todayReal = new Date();
-
-    for (let i = 0; i < firstDayIndex; i++) {
-      const emptyDiv = document.createElement('div');
-      emptyDiv.className = 'day empty';
-      calendarGrid.appendChild(emptyDiv);
-    }
-
-    for (let day = 1; day <= totalDays; day++) {
-      const dayDiv = document.createElement('div');
-      dayDiv.className = 'day';
-
-      if (day === todayReal.getDate() && month === todayReal.getMonth() && year === todayReal.getFullYear()) {
-        dayDiv.classList.add('today');
-      }
-
-      const numSpan = document.createElement('span');
-      numSpan.className = 'num';
-      numSpan.innerText = day;
-      dayDiv.appendChild(numSpan);
-
-      calendarGrid.appendChild(dayDiv);
-    }
-  }
-
-  function changeMonth(offset) {
-    currentDate.setMonth(currentDate.getMonth() + offset);
-    renderCalendar();
-  }
-
-  renderCalendar();
 </script>
 
 </body>
