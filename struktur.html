@@ -5,6 +5,103 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Struktur Organisasi — Kelurahan Bane</title>
 <link rel="stylesheet" href="css/style.css">
+<style>
+  /* Base Style Struktur Organisasi */
+  .org-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 0;
+  }
+  .org-node {
+    background: #ffffff;
+    border: 1px solid #2f4d3a;
+    border-radius: 6px;
+    padding: 12px 20px;
+    text-align: center;
+    min-width: 180px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+  .org-node.top {
+    background: #2f4d3a;
+    color: #ffffff;
+  }
+  .org-node.top .name {
+    color: #e0e0e0;
+  }
+  .org-node .role {
+    font-weight: bold;
+    font-size: 15px;
+  }
+  .org-node .name {
+    font-size: 13px;
+    color: #666;
+    margin-top: 4px;
+  }
+  .org-line {
+    width: 2px;
+    height: 20px;
+    background: #2f4d3a;
+  }
+  .org-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    position: relative;
+    padding-top: 20px;
+  }
+  .org-row::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: #2f4d3a;
+  }
+  .org-branch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  .org-branch::before {
+    content: '';
+    width: 2px;
+    height: 20px;
+    background: #2f4d3a;
+    margin-top: -20px;
+  }
+
+  /* Penyesuaian Responsif Khusus HP (Mobile View) */
+  @media (max-width: 768px) {
+    .org-row {
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      padding-top: 0;
+    }
+    .org-row::before {
+      display: none; /* Sembunyikan garis horizontal di layar HP */
+    }
+    .org-branch {
+      width: 100%;
+      max-width: 260px;
+    }
+    .org-branch::before {
+      content: '';
+      width: 2px;
+      height: 15px;
+      background: #2f4d3a;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    .org-node {
+      width: 100%;
+    }
+  }
+</style>
 </head>
 <body>
 
