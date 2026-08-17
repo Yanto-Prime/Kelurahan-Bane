@@ -49,11 +49,21 @@
     z-index: 2;
   }
 
-  /* Responsif Layar HP (Mobile View) */
+  /* Responsif Layar HP (Mobile View) - Mengikuti gaya struktur.html */
   @media (max-width: 768px) {
+    .navbar {
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+    }
+
     .menu-toggle {
       display: flex;
+      order: 2; /* Posisi di sebelah kanan judul */
+      margin-left: auto;
     }
+
     .nav-links {
       display: none;
       flex-direction: column;
@@ -67,9 +77,11 @@
       border-top: 1px solid #eee;
       gap: 12px;
     }
+
     .nav-links.active {
       display: flex;
     }
+
     .menu-toggle.active span:nth-child(1) {
       transform: translateY(9px) rotate(45deg);
     }
@@ -90,7 +102,6 @@
     <span>Kelurahan Bane<br><small>Kec. Siantar Utara — Kota Pematangsiantar</small></span>
   </a>
 
-  <!-- TOMBOL BURGER MENU -->
   <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
     <span></span>
     <span></span>
@@ -98,7 +109,7 @@
   </button>
 
   <div class="nav-links" id="navLinks">
-    <a href="/" class="active">Beranda</a>
+    <a href="index.html" class="active">Beranda</a>
     <a href="struktur.html">Struktur Organisasi</a>
     <a href="kalender.html">Kalender</a>
     <a href="album/galeri.html">Album</a>
@@ -106,7 +117,6 @@
 </nav>
 <div class="motif-strip"></div>
 
-<!-- HERO BANNER WARNA ORIGINAL TANPA LAPISAN HITAM -->
 <div class="hero-banner" id="kantor-banner" style="background-image: url('kantorlurah.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
   <div class="hero-banner-content">
     <div class="eyebrow">Pemerintah Kota Pematangsiantar</div>
@@ -129,14 +139,14 @@
     <div>
       <h3>Alamat Kantor</h3>
       <p>Jl. Sungkit No.62, Bane, Siantar Utara, Pematang Siantar , Sumatra Utara 21143</p>
-      <small><a href="https://maps.app.goo.gl/4qmF6XSGujoeEQTK7" target="_blank" style="color: #2f4d3a; text-decoration: underline;">Buka Rute di Google Maps &rarr;</a></small>
+      <small><a href="https://maps.app.goo.gl/4qmF6XSGujoeEQTK7" target="_blank" style="color: #2f4d3a; text-decoration: underline;">Buka Rute di Google Maps →</a></small>
     </div>
   </div>
 </section>
 
 <section class="section">
   <div class="section-eyebrow">Tentang Kami</div>
-  <h2>Visi &amp; Misi Kelurahan Bane</h2>
+  <h2>Visi & Misi Kelurahan Bane</h2>
 
   <div class="visi-box">
     <h3>Visi</h3>
@@ -194,7 +204,7 @@
       <p>Pengesahan salinan dokumen kependudukan warga kelurahan.</p>
     </div>
     <div class="card">
-      <h3>Informasi &amp; Pengaduan</h3>
+      <h3>Informasi & Pengaduan</h3>
       <p>Sampaikan aspirasi, pengaduan, atau informasi seputar kelurahan.</p>
     </div>
   </div>
@@ -207,7 +217,6 @@
   Melayani dengan sepenuh hati untuk warga Kelurahan Bane.
 </footer>
 
-<!-- SCRIPT BURGER MENU TOGGLE -->
 <script>
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.getElementById('navLinks');
