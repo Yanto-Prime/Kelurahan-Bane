@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dokumentasi Kantor Lurah — Kelurahan Bane</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .album-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 25px;
+  }
+
+  .card-foto {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  .card-foto img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .card-foto img:hover {
+    transform: scale(1.03);
+  }
+
+  .btn-back {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #2f4d3a;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  /* Style Pop-up Gambar (Modal Lightbox) */
+  .image-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .image-modal-content {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 8px;
+    object-fit: contain;
+  }
+
+  .close-modal {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="../index.html" class="brand">
+    <span>Kelurahan Bane<br><small>Kec. Siantar Utara — Kota Pematangsiantar</small></span>
+  </a>
+  <div class="nav-links">
+    <a href="../index.html">Beranda</a>
+    <a href="../struktur.html">Struktur Organisasi</a>
+    <a href="../kalender.html">Kalender</a>
+    <a href="galeri.html" class="active">Album</a>
+  </div>
+</nav>
+
+<section class="section" style="padding-top: 40px;">
+  <a href="galeri.html" class="btn-back">&larr; Kembali ke Daftar Album</a>
+
+  <div class="section-eyebrow">DOKUMENTASI</div>
+  <h2>Dokumentasi Kantor Lurah Bane</h2>
+
+  <!-- GRID 6 FOTO -->
+  <div class="album-grid">
+    <div class="card-foto">
+      <img src="../kantorlurah.jpeg" alt="Foto 1" class="zoomable-img">
+    </div>
+    <div class="card-foto">
+      <img src="../kantorlurah.jpeg" alt="Foto 2" class="zoomable-img">
+    </div>
+    <div class="card-foto">
+      <img src="../kantorlurah.jpeg" alt="Foto 3" class="zoomable-img">
+    </div>
+    <div class="card-foto">
+      <img src="../kantorlurah.jpeg" alt="Foto 4" class="zoomable-img">
+    </div>
+    <div class="card-foto">
+      <img src="../kantorlurah.jpeg" alt="Foto 5" class="zoomable-img">
+    </div>
+    <div class="card-foto">
+      <img src="../kantorlurah.jpeg" alt="Foto 6" class="zoomable-img">
+    </div>
+  </div>
+</section>
+
+<!-- MODAL LIGHTBOX FOTO -->
+<div id="imageModal" class="image-modal">
+  <span class="close-modal" id="closeModal">&times;</span>
+  <img class="image-modal-content" id="fullImage" alt="Preview Foto">
+</div>
+
+<script>
+  // Script Pop-up Zoom Foto
+  const imageModal = document.getElementById("imageModal");
+  const fullImage = document.getElementById("fullImage");
+  const closeModal = document.getElementById("closeModal");
+  const zoomableImages = document.querySelectorAll(".zoomable-img");
+
+  zoomableImages.forEach(img => {
+    img.addEventListener("click", function () {
+      imageModal.style.display = "flex";
+      fullImage.src = this.src;
+    });
+  });
+
+  closeModal.addEventListener("click", () => imageModal.style.display = "none");
+  imageModal.addEventListener("click", (e) => {
+    if (e.target === imageModal) imageModal.style.display = "none";
+  });
+</script>
+
+</body>
+</html>
