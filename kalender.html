@@ -130,9 +130,6 @@
     }
     .nav-links.active {
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-around;
     }
     .menu-toggle.active span:nth-child(1) {
       transform: translateY(9px) rotate(45deg);
@@ -175,15 +172,11 @@
 <body>
 
 <nav class="navbar">
-  <a href="/" class="brand">
-    <svg class="crest" viewBox="0 0 40 40" fill="none">
-      <path d="M20 4 C20 4 8 14 8 24 C8 30 13 34 20 34 C27 34 32 30 32 24 C32 14 20 4 20 4Z" fill="#2f4d3a"/>
-      <circle cx="20" cy="22" r="4" fill="#c9962c"/>
-    </svg>
+  <a href="index.html" class="brand">
+    <img src="../logo-kelurahan-bane.png" alt="Logo Kelurahan Bane" class="crest">
     <span>Kelurahan Bane<br><small>Kec. Siantar Utara — Kota Pematangsiantar</small></span>
   </a>
 
-  <!-- TOMBOL BURGER MENU -->
   <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
     <span></span>
     <span></span>
@@ -191,10 +184,10 @@
   </button>
 
   <div class="nav-links" id="navLinks">
-    <a href="/">Beranda</a>
-    <a href="struktur">Struktur Organisasi</a>
-    <a href="kalender" class="active">Kalender</a>
-    <a href="album">Album</a>
+    <a href="index.html">Beranda</a>
+    <a href="struktur.html">Struktur Organisasi</a>
+    <a href="kalender.html" class="active">Kalender</a>
+    <a href="album/galeri.html">Album</a>
   </div>
 </nav>
 <div class="motif-strip"></div>
@@ -203,13 +196,11 @@
   <div class="section-eyebrow">Waktu &amp; Tanggal</div>
   <h2>Kalender Digital Kelurahan</h2>
 
-  <!-- CARD WAKTU REAL-TIME -->
   <div class="clock-card">
     <div class="clock-date" id="liveDate">Hari, 00 Bulan 0000</div>
     <div class="clock-time" id="liveClock">00:00:00 WIB</div>
   </div>
 
-  <!-- KALENDER INTERAKTIF -->
   <div class="calendar-card">
     <div class="cal-header-nav">
       <button class="cal-btn" id="prevBtn">&larr; <span class="btn-text">Bulan Sebelumnya</span></button>
@@ -218,8 +209,7 @@
     </div>
 
     <div class="calendar-grid" id="calendarGrid">
-      <!-- Grid tanggal dimasukkan via JavaScript -->
-    </div>
+      </div>
   </div>
 </section>
 
@@ -228,7 +218,6 @@
   Melayani dengan sepenuh hati untuk warga Kelurahan Bane.
 </footer>
 
-<!-- SCRIPT KALENDER & WAKTU REAL-TIME -->
 <script>
   // Mobile Burger Menu Toggle
   const menuToggle = document.getElementById('menuToggle');
