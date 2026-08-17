@@ -3,8 +3,142 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Album: Full Foto Sekitar — Kelurahan Bane</title>
+<title>Galeri Album Foto — Kelurahan Bane</title>
 <link rel="stylesheet" href="../css/style.css">
+<style>
+  /* Style Tombol Burger Menu */
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1000;
+  }
+  .menu-toggle span {
+    width: 100%;
+    height: 3px;
+    background-color: #2f4d3a;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+
+  /* Style Card Galeri Foto */
+  .album-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+
+  .card-foto {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+  }
+
+  .card-foto:hover {
+    transform: translateY(-5px);
+  }
+
+  .card-foto img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+
+  .card-foto img:hover {
+    opacity: 0.9;
+  }
+
+  /* Style Modal Lightbox Pop-up Foto */
+  .image-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .image-modal-content {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    object-fit: contain;
+    animation: zoomIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .close-modal {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    user-select: none;
+  }
+
+  .close-modal:hover {
+    color: #f87171;
+  }
+
+  @keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  /* Responsif Layar HP (Mobile View) */
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: flex;
+    }
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: #ffffff;
+      padding: 15px 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-top: 1px solid #eee;
+      gap: 12px;
+    }
+    .nav-links.active {
+      display: flex;
+    }
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+  }
+</style>
 </head>
 <body>
 
@@ -16,35 +150,104 @@
     </svg>
     <span>Kelurahan Bane<br><small>Kec. Siantar Utara — Kota Pematangsiantar</small></span>
   </a>
-  <div class="nav-links">
+
+  <!-- TOMBOL BURGER MENU -->
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="nav-links" id="navLinks">
     <a href="../index.html">Beranda</a>
     <a href="../struktur.html">Struktur Organisasi</a>
     <a href="../kalender.html">Kalender</a>
-    <a href="../album.html" class="active">Album</a>
+    <a href="../galeri.html" class="active">Album</a>
   </div>
 </nav>
 <div class="motif-strip"></div>
 
 <section class="section" style="padding-top:50px;">
-  <a href="../album.html" class="back-link">← Kembali ke Album</a>
-  <div class="section-eyebrow">Dokumentasi</div>
-  <h2>Peringatan HUT Kemerdekaan RI</h2>
-
-  <div class="photo-grid">
-    <div class="photo-tile" style="background:#b5533c;">📷<br>Foto 1</div>
-    <div class="photo-tile" style="background:#9c4530;">📷<br>Foto 2</div>
-    <div class="photo-tile" style="background:#c9962c;">📷<br>Foto 3</div>
-    <div class="photo-tile" style="background:#2f4d3a;">📷<br>Foto 4</div>
-    <div class="photo-tile" style="background:#243b2c;">📷<br>Foto 5</div>
-    <div class="photo-tile" style="background:#b5533c;">📷<br>Foto 6</div>
+  <a href="../index.html" class="back-link" style="color: #2f4d3a; text-decoration: none; font-weight: bold; font-size: 14px;">← Kembali ke Beranda Utama</a>
+  
+  <div style="margin-top: 20px;">
+    <div class="section-eyebrow">Dokumentasi</div>
+    <h2>Album 1: Tampak Kantor Lurah Dari Depan</h2>
+    <div class="album-grid">
+      <div class="card-foto">
+        <img src="../galeri/album1/kantorlurah.jpeg" alt="Kantor Lurah Tampak Depan 1" class="zoomable-img">
+      </div>
+      <div class="card-foto">
+        <img src="../galeri/album1/kantorlurah2.jpeg" alt="Kantor Lurah Tampak Depan 2" class="zoomable-img">
+      </div>
+      <div class="card-foto">
+        <img src="../galeri/album1/kantorlurah3.jpeg" alt="Kantor Lurah Tampak Depan 3" class="zoomable-img">
+      </div>
+    </div>
   </div>
-  <p style="font-size:12px; color:var(--ink-dim); margin-top:18px;">*Kotak di atas adalah placeholder — ganti dengan foto dokumentasi asli kegiatan.</p>
+
+  <div style="margin-top: 40px;">
+    <h2>Album 2: Tampak Kantor Lurah Dari Dalam</h2>
+    <div class="album-grid">
+      <div class="card-foto">
+        <img src="../galeri/album2/kantorlurah.jpeg" alt="Kantor Lurah Tampak 4" class="zoomable-img" style="height: 350px;">
+      </div>
+      <div class="card-foto">
+        <img src="../galeri/album2/kantorlurah2.jpeg" alt="Kantor Lurah Tampak 5" class="zoomable-img" style="height: 350px;">
+      </div>
+    </div>
+  </div>
 </section>
+
+<!-- ELEMENT POPUP / MODAL FULLIMAGE -->
+<div id="imageModal" class="image-modal">
+  <span class="close-modal" id="closeModal">&times;</span>
+  <img class="image-modal-content" id="fullImage" alt="Tampilan Penuh Foto">
+</div>
 
 <footer>
   <strong>Kantor Lurah Bane</strong> — Kecamatan Siantar Utara, Kota Pematangsiantar<br>
   Melayani dengan sepenuh hati untuk warga Kelurahan Bane.
 </footer>
+
+<script>
+  // Toggle Burger Menu Mobile
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+  }
+
+  // Pop-up Lightbox Foto
+  document.addEventListener("DOMContentLoaded", function () {
+    const imageModal = document.getElementById("imageModal");
+    const fullImage = document.getElementById("fullImage");
+    const closeModal = document.getElementById("closeModal");
+    const zoomableImages = document.querySelectorAll(".zoomable-img");
+
+    zoomableImages.forEach(img => {
+      img.addEventListener("click", function () {
+        imageModal.style.display = "flex";
+        fullImage.src = this.src;
+        fullImage.alt = this.alt;
+      });
+    });
+
+    closeModal.addEventListener("click", function () {
+      imageModal.style.display = "none";
+    });
+
+    imageModal.addEventListener("click", function (e) {
+      if (e.target === imageModal) {
+        imageModal.style.display = "none";
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
