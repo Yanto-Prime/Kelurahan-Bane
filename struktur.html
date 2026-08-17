@@ -27,76 +27,97 @@
     transition: all 0.3s ease;
   }
 
-  /* Base Style Struktur Organisasi */
+  /* Base Style Struktur Organisasi (Presisi & Simetris) */
   .org-chart {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 30px 0;
+    margin: 40px auto;
+    width: 100%;
+    max-width: 1100px;
+    overflow-x: auto; /* Mencegah layout hancur di HP jika mode desktop dibuka */
+    padding: 10px;
   }
+
   .org-node {
     background: #ffffff;
-    border: 1px solid #2f4d3a;
-    border-radius: 6px;
-    padding: 12px 20px;
+    border: 1.5px solid #2f4d3a;
+    border-radius: 8px;
+    padding: 12px 16px;
     text-align: center;
-    min-width: 180px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    width: 210px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    box-sizing: border-box;
   }
+
   .org-node.top {
     background: #2f4d3a;
     color: #ffffff;
   }
+
   .org-node.top .name {
-    color: #e0e0e0;
+    color: #e2e8f0;
   }
+
   .org-node .role {
     font-weight: bold;
-    font-size: 15px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
+
   .org-node .name {
     font-size: 13px;
-    color: #666;
+    color: #555;
     margin-top: 4px;
   }
+
   .org-line {
     width: 2px;
-    height: 20px;
+    height: 25px;
     background: #2f4d3a;
   }
+
+  /* Baris Kasi (4 Kolom Sederet Sempurna) */
   .org-row {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
     width: 100%;
     position: relative;
-    padding-top: 20px;
+    padding-top: 25px;
   }
+
+  /* Garis Horizontal Penghubung 4 Kasi */
   .org-row::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 10%;
-    right: 10%;
+    left: 115px;  /* Pas di tengah-tengah kotak paling kiri (210px / 2 + gap) */
+    right: 115px; /* Pas di tengah-tengah kotak paling kanan */
     height: 2px;
     background: #2f4d3a;
   }
+
   .org-branch {
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
   }
+
+  /* Garis Vertikal dari Garis Horizontal ke Masing-Masing Kotak Kasi */
   .org-branch::before {
     content: '';
     width: 2px;
-    height: 20px;
+    height: 25px;
     background: #2f4d3a;
-    margin-top: -20px;
+    position: absolute;
+    top: -25px;
   }
 
-  /* Penyesuaian Responsif Khusus HP (Mobile View) */
-  @media (max-width: 768px) {
+  /* Responsif Layar HP (Mobile View) */
+  @media (max-width: 900px) {
     .menu-toggle {
       display: flex;
     }
@@ -126,27 +147,29 @@
       transform: translateY(-9px) rotate(-45deg);
     }
 
+    /* Tampilan Hirarki Vertikal Rapi Khusus Layar HP */
     .org-row {
       flex-direction: column;
       align-items: center;
       gap: 15px;
       padding-top: 0;
     }
+
     .org-row::before {
-      display: none;
+      display: none; /* Sembunyikan garis horizontal di HP */
     }
+
     .org-branch {
       width: 100%;
       max-width: 260px;
     }
+
     .org-branch::before {
-      content: '';
-      width: 2px;
+      position: relative;
+      top: 0;
       height: 15px;
-      background: #2f4d3a;
-      margin-top: 0;
-      margin-bottom: 0;
     }
+
     .org-node {
       width: 100%;
     }
@@ -156,7 +179,7 @@
 <body>
 
 <nav class="navbar">
-  <a href="/" class="brand">
+  <a href="index.html" class="brand">
     <svg class="crest" viewBox="0 0 40 40" fill="none">
       <path d="M20 4 C20 4 8 14 8 24 C8 30 13 34 20 34 C27 34 32 30 32 24 C32 14 20 4 20 4Z" fill="#2f4d3a"/>
       <circle cx="20" cy="22" r="4" fill="#c9962c"/>
@@ -172,49 +195,58 @@
   </button>
 
   <div class="nav-links" id="navLinks">
-    <a href="/">Beranda</a>
-    <a href="struktur" class="active">Struktur Organisasi</a>
-    <a href="kalender">Kalender</a>
-    <a href="album">Album</a>
+    <a href="index.html">Beranda</a>
+    <a href="struktur.html" class="active">Struktur Organisasi</a>
+    <a href="kalender.html">Kalender</a>
+    <a href="album/galeri.html">Album</a>
   </div>
 </nav>
 <div class="motif-strip"></div>
 
-<section class="section" style="padding-top:60px;">
+<section class="section" style="padding-top:50px;">
   <div class="section-eyebrow">Kepengurusan</div>
   <h2>Struktur Organisasi Kelurahan Bane</h2>
 
   <div class="org-chart">
+    <!-- LURAH -->
     <div class="org-node top">
       <div class="role">Lurah</div>
-      <div class="name">Mulatua Siregar,SE</div>
+      <div class="name">Mulatua Siregar, SE</div>
     </div>
-    <div class="org-line"></div>
-    <div class="org-node">
-      <div class="role">Sekretaris Lurah</div>
-      <div class="name">Yustina. M Ambarita,SE</div>
-    </div>
+    
     <div class="org-line"></div>
 
+    <!-- SEKRETARIS LURAH -->
+    <div class="org-node">
+      <div class="role">Sekretaris Lurah</div>
+      <div class="name">Yustina M. Ambarita, SE</div>
+    </div>
+
+    <div class="org-line"></div>
+
+    <!-- BARIS KEPALA SEKSI (KASI) -->
     <div class="org-row">
       <div class="org-branch">
         <div class="org-node">
           <div class="role">Kasi Pemerintahan</div>
-          <div class="name">Lambok. H Sihombing,SH</div>
+          <div class="name">Lambok H. Sihombing, SH</div>
         </div>
       </div>
+
       <div class="org-branch">
         <div class="org-node">
           <div class="role">Kasi Pemeliharaan Prasarana</div>
-          <div class="name">Berta Silvina Situmorang,SE</div>
+          <div class="name">Berta Silvina Situmorang, SE</div>
         </div>
       </div>
+
       <div class="org-branch">
         <div class="org-node">
           <div class="role">Kasi Kesejahteraan Sosial</div>
-          <div class="name">Mery Adelina Tarigan,SE</div>
+          <div class="name">Mery Adelina Tarigan, SE</div>
         </div>
       </div>
+
       <div class="org-branch">
         <div class="org-node">
           <div class="role">Kasi Trantib</div>
@@ -244,8 +276,8 @@
       <p>Menangani administrasi kependudukan, pertanahan, dan pelayanan surat-menyurat warga.</p>
     </div>
     <div class="card">
-      <h3>Kasi Pembangunan</h3>
-      <p>Mengoordinasikan pembangunan infrastruktur dan pemberdayaan ekonomi masyarakat kelurahan.</p>
+      <h3>Kasi Pemeliharaan Prasarana</h3>
+      <p>Mengoordinasikan pembangunan infrastruktur dan pemeliharaan fasilitas umum di lingkungan kelurahan.</p>
     </div>
     <div class="card">
       <h3>Kasi Kesejahteraan Sosial</h3>
