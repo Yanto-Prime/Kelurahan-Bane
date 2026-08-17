@@ -63,7 +63,7 @@ img { max-width: 100%; display: block; }
   font-family: var(--font-display); font-weight: 600;
   font-size: 17px; color: var(--forest);
 }
-.navbar .brand .crest { width: 85px; height: 85px; flex-shrink: 0; }
+.navbar .brand .crest { width: 50px; height: 50px; flex-shrink: 0; object-fit: contain; }
 .navbar .brand small { display: block; font-family: var(--font-body); font-weight: 500; font-size: 11px; color: var(--ink-dim); letter-spacing: .5px; }
 .nav-links { display: flex; gap: 30px; align-items: center; flex-wrap: wrap; }
 .nav-links a {
@@ -384,9 +384,19 @@ footer strong { color: var(--forest); }
 }
 
 @media (max-width: 768px) {
+  /* Navbar diset agar elemen nempel/saling berdekatan */
+  .navbar {
+    justify-content: flex-start;
+    gap: 16px;
+    padding: 12px 16px;
+  }
+
+  /* Mengatur tombol burger tepat di samping teks */
   .menu-toggle {
     display: flex;
+    margin-left: 0;
   }
+
   .nav-links {
     display: none;
     flex-direction: column;
